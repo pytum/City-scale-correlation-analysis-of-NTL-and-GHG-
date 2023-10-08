@@ -1,0 +1,57 @@
+# OCO-2 XCO2 Data Download
+%reload_ext autoreload
+%autoreload 2
+import os
+import pandas as pd
+from dotenv import load_dotenv
+from urllib.parse import urlparse
+import subprocess
+# load credentials from an .env file
+# https://github.com/theskumar/python-dotenv
+env_path = 'D:/Privat/Uni/Masterthesis/Data/GHG_data/disc_gsfc_nasa/230823/subset_OCO2_L2_Lite_FP_11.1r_20230823_193141_/.env'
+load_dotenv(dotenv_path=env_path)
+# check wget is installed
+!wget --version
+## Get data from the GES DISC archive
+# Product: https://disc.gsfc.nasa.gov/datasets/OCO2_L2_Lite_FP_9r/summary
+# Generate the 'Download links list' text file for an area and time period using the 'Subset / Get Data' method
+# Save this file to the data folder and verify the file name below
+# Create an account with NASA Earthdata to supply credentials for the file downloads 
+# setup folders
+folder_path = 'D:/Privat/Uni/Masterthesis/Data/GHG_data/disc_gsfc_nasa/230823/subset_OCO2_L2_Lite_FP_11.1r_20230823_193141_'
+data_file = os.path.join(folder_path, 'subset_OCO2_L2_Lite_FP_11.1r_20230823_193141_.txt')
+to_folder = os.path.join(folder_path, 'data')
+is_force_download = False
+
+# for NASA Earthdata
+#username = os.getenv('USERNAME')
+#password = os.getenv('PASSWORD')
+
+username = 'tumlarzw'
+password = 'qwertpoiuTZUI1234!=)'
+# preview downloaded links list first
+df = pd.read_csv(data_file, sep=" ",header=None)
+print('found', len(df), 'links')
+pd.set_option('display.max_colwidth', 200)
+df.head(10)
+
+
+def download_files(data_file, username, password, to_folder):
+    with open(data_file, "r") as data_file:
+        for line in data_file:
+            url = line.strip()
+            filename = os.path.basename(urlparse(url).path)
+            if is_force_download or not os.path.isfile(os.path.join(to_folder, filename)):
+                print("Downloading file:" + url)
+                
+                wget_command = f'wget -P "{to_folder}" --user="{username}" --password="{password}" "{url}"'
+                subprocess_result = subprocess.run(wget_command, shell=True, capture_output=True, text=True)
+                
+                print("Download completed:", filename)
+                print("Subprocess stdout:", subprocess_result.stdout)
+                print("Subprocess stderr:", subprocess_result.stderr)
+            else:
+                print("File is already downloaded:", filename)
+
+%%time
+download_files(data_file, username, password, to_folder)
