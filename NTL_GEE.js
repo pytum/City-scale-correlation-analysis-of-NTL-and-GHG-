@@ -8,8 +8,7 @@
 //                        To toggle between different scales, 
 //           use ARM (ARM), ARM_box (ARM box) or MTL_REG (regional) as a variable
 //
-//               ! The ARM region is manually imported as a shapefile -
-//                    it is therefore missing in this code if executed ! 
+//               ! The ARM region is manually imported as a shapefile ! 
 //              
 //===========================================================================================
 
