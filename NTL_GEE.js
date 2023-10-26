@@ -1,12 +1,15 @@
 //===========================================================================================
-//                               Masterthesis Lars Tum
+//                               Masterthesis LT
 //             Title:  Analyzing the Strengths and Limitations of Satellite- and 
 // Ground-Based Data for City-Scale Greenhouse Gas Emission Monitoring in Montreal, Canada
 //                            
 //               Nightlights before and after Lockdown in Montreal, Canada
 //
 //                        To toggle between different scales, 
-//           use MTL_ARM (ARM), MTL_ARM_box (ARM box) or MTL_REG (regional) as a variable
+//           use ARM (ARM), ARM_box (ARM box) or MTL_REG (regional) as a variable
+//
+//               ! The ARM region is manually imported as a shapefile -
+//                    it is therefore missing in this code if executed ! 
 //              
 //===========================================================================================
 
