@@ -1,7 +1,7 @@
 clear all; close all; 
 
-path = 'D:/Privat/Uni/Masterthesis/Data/GHG_data/disc_gsfc_nasa/040923/data_analysis_test_2_matlab/';
-filename = 'D:/Privat/Uni/Masterthesis/Data/GHG_data/disc_gsfc_nasa/040923/data_analysis_test_2_matlab/oco2_LtCO2_220901_B11100Ar_230609082353s.nc4';
+path = 'YOURPATH';
+filename = 'YOUR_OCO_nc4_file';
 
 time = ncread(filename, 'time'); time = datenum(1970,01,01,0,0,time);
 lat = ncread(filename, 'latitude');
@@ -14,7 +14,7 @@ xmin = 390;%max(min(xco2),350);
 
 
 % Specify the path to your coastline shapefile
-coastlineShapefilePath = ('D:/Privat/Uni/Masterthesis/Data/GHG_data/disc_gsfc_nasa/040923/data_analysis_test_2_matlab/ne_10m_coastline.shp');
+coastlineShapefilePath = ('YOURPATH_to_shapefile');
 
 % Read the coastline shapefile
 coast = shaperead(coastlineShapefilePath);
