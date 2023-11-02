@@ -1,3 +1,5 @@
+% This code was changed regularly for achieving multiple results. The code shown might not deliver the results expected. Consider browsing through variables and values before running.
+
 
 clear all; close all; 
 
@@ -12,11 +14,9 @@ latbnd = [44, 47];[42 45]; %
 lonbnd = [-76, -71]; %[-82 -77]; %
 regionfix = 'montreal'; %'toronto'; %
 
-%years = [2014:2022];
-%path_data = '/Volumes/SANDISK_USB/oco2/v10/';
 dataselect = 'data_analysis_test_2';
 years = 2021:2023;% [2019:2022]; %
-path_data = ['D:/Privat/Uni/Masterthesis/Data/GHG_data/disc_gsfc_nasa/230823/subset_OCO2_L2_Lite_FP_11.1r_20230823_193141_/',dataselect,'/'];
+path_data = ['YOURPATH',dataselect,'/'];
 filesavefix = ['.',regionfix,'-',dataselect]; %
 ocofix = 'oco2';
 
