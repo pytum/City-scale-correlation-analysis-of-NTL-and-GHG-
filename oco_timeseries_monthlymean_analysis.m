@@ -77,7 +77,7 @@ fprintf('Mean XCO2 for the region of interest: %.4f ppm\n', mean_xco2_region);
 ax = worldmap([latmin, latmax], [lonmin, lonmax]);
 
 % Overlay the shapefile on the map (replace 'region_shapefile.shp' with your shapefile path)
-shapefile = shaperead('D:/Privat/Uni/Masterthesis/Data/MTL_shp/dissolved_MTL/MTL.shp');
+shapefile = shaperead('YOURPATH_to_shapefile');
 geoshow(shapefile);
 
 % Overlay a single point on the map with the mean XCO2 for the region
