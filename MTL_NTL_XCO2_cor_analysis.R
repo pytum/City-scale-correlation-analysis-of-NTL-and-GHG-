@@ -23,11 +23,11 @@ library(dplyr)
 #NTL_MTL=read.csv("ntl_210923.csv")
 
 #small bounding box:
-setwd("D:/Privat/Uni/Masterthesis/Data/cor_analysis_071023/")
+setwd("YOURPATH")
 #data=read.csv("MTL_NTL_small_boundingbox_071023_b.csv")
 
 #big bounding box:
-data=read.csv("xco2_ntl_191023_b.csv")
+data=read.csv("xco2_ntl.csv")
 
 
 x = data$date_c
@@ -50,31 +50,6 @@ p + geom_point() +
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(), 
         axis.line = element_line(colour = "black"))
-
-
-GHG_MTL=read.csv("xco2_210923.csv")
-
-a = GHG_MTL$date
-b = GHG_MTL$XCO2
-
-ggplot(mpg, aes(x = hwy, y = cty, color = class)) +
-  geom_point() +
-  theme_gray(base_size = 18)
-
-p2 <- ggplot(GHG_MTL, aes(a, b))+
-  geom_point() +
-  theme_gray(base_size = 18)
-
-p2 + geom_point() +
-  stat_poly_line() +
-  stat_poly_eq(use_label("eq")) +
-  stat_poly_eq(label.y = 0.9) +
-  geom_line(aes(group = 1), colour = "red") + 
-  geom_smooth(aes(group = 1), linewidth = 2, method = "lm", se = FALSE) +
-  labs(x = "Months (Jan 2014 - Jan 2022)", y = "XCO2 monthly mean", 
-       title = "XCO2 monthly mean in MTL") +
-  theme(axis.text.x=element_blank()) + theme(panel.border = element_blank(), panel.grid.major = element_blank(),
-                                             panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))
 
 c = cor.test(data$nW_c, data$XCO2_c,method="pearson")
 c
