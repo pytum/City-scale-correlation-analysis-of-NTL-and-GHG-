@@ -8,7 +8,7 @@ from urllib.parse import urlparse
 import subprocess
 # load credentials from an .env file
 # https://github.com/theskumar/python-dotenv
-env_path = 'D:/Privat/Uni/Masterthesis/Data/GHG_data/disc_gsfc_nasa/230823/subset_OCO2_L2_Lite_FP_11.1r_20230823_193141_/.env'
+env_path = 'YOURPATH_to_downloaded_raw_oco2_subset_data'
 load_dotenv(dotenv_path=env_path)
 # check wget is installed
 !wget --version
@@ -18,7 +18,7 @@ load_dotenv(dotenv_path=env_path)
 # Save this file to the data folder and verify the file name below
 # Create an account with NASA Earthdata to supply credentials for the file downloads 
 # setup folders
-folder_path = 'D:/Privat/Uni/Masterthesis/Data/GHG_data/disc_gsfc_nasa/230823/subset_OCO2_L2_Lite_FP_11.1r_20230823_193141_'
+folder_path = 'YOURPATH_to_subset_folder'
 data_file = os.path.join(folder_path, 'subset_OCO2_L2_Lite_FP_11.1r_20230823_193141_.txt')
 to_folder = os.path.join(folder_path, 'data')
 is_force_download = False
@@ -27,8 +27,8 @@ is_force_download = False
 #username = os.getenv('USERNAME')
 #password = os.getenv('PASSWORD')
 
-username = 'tumlarzw'
-password = 'qwertpoiuTZUI1234!=)'
+username = 'YOUR_USERNAME'
+password = 'YOUR_PASSWORD'
 # preview downloaded links list first
 df = pd.read_csv(data_file, sep=" ",header=None)
 print('found', len(df), 'links')
